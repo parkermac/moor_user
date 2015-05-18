@@ -15,16 +15,16 @@ clear; close all; moor_start_user;
 % The "basename" is just a useful way of defining a run, and we use it in
 % the code only for naming the "outfile"
 basename = 'salish_2006_4';
-indir = ['/Users/PM3/Documents/roms/output/',basename,'/'];
+indir = ['/Users/PM5/Documents/roms/output/',basename,'/'];
 %indir = ['/pmraid1/daves/runs/',basename,'/OUT/'];
 % The code allows you to extract from a bunch of mooring locations at once,
 % and the cell array "mloc_list" is where you give names to each mooring.
 % E.g. mloc_list = {'name1','name2'}; would allow two moorings.
-mloc_list = {'Skagit'};
-mlon = -122.4791;
-mlat = 48.3464;
+mloc_list = {'HenryHu'};
+mlon = -(122 + 44.5/60); % he asked for 45.5' but that was too close to land
+mlat = 48 + 6.7/60;
 % The "tag" is just appended to the outfile name.
-tag = 'Skagit';
+tag = 'HenryHu';
 % &&&&&&&&&&& END USER INPUT &&&&&&&&&&&&&&&
 
 outfile = [Tdir.moor_out,basename,'_',tag,'.mat'];
