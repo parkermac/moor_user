@@ -22,7 +22,7 @@ for ii = 1:length(year_vec)
         otherwise
             prefix = 'C';
     end
-    load([Tdir.moor_out,prefix,num2str(year),'_RC.mat']);
+    load([Tdir.moor_out,'cascadia/',prefix,num2str(year),'_RC.mat']);
     for ii = 1:length(M)
         ind = ii;
         if strcmp(M(ii).mloc,'RN'); break; end;
@@ -38,7 +38,7 @@ end
 % load  some 2005 runs
 % NOTE these have all three RISE moorings
 
-load([Tdir.moor_out,'J2005_RISE3.mat']);
+load([Tdir.moor_out,'SciDAC/J2005_RISE3.mat']);
 for ii = 1:length(M)
     ind = ii;
     if strcmp(M(ii).mloc,'RN'); break; end;
@@ -49,7 +49,7 @@ T1J = M(ind).temp(end,:);
 S0J = M(ind).salt(1,:);
 S1J = M(ind).salt(end,:);
 
-load([Tdir.moor_out,'Jcam2005_RISE3.mat']);
+load([Tdir.moor_out,'SciDAC/Jcam2005_RISE3.mat']);
 for ii = 1:length(M)
     ind = ii;
     if strcmp(M(ii).mloc,'RN'); break; end;
@@ -60,7 +60,7 @@ T1Jcam = M(ind).temp(end,:);
 S0Jcam = M(ind).salt(1,:);
 S1Jcam = M(ind).salt(end,:);
 
-load([Tdir.moor_out,'Tpop2005_RN.mat']);
+load([Tdir.moor_out,'SciDAC/Tpop2005_RN.mat']);
 for ii = 1:length(M)
     ind = ii;
     if strcmp(M(ii).mloc,'RN'); break; end;
@@ -71,7 +71,8 @@ T1pop = M(ind).temp(end,:);
 S0pop = M(ind).salt(1,:);
 S1pop = M(ind).salt(end,:);
 
-lh1 = plot(TD,Z_dasfilt(T0,'godin'),'-b',TD,Z_dasfilt(T1,'godin'),'-r');
+%lh1 = plot(TD,Z_dasfilt(T0,'godin'),'-b',TD,Z_dasfilt(T1,'godin'),'-r');
+lh1 = plot(TD,T0,'.b',TD,T1,'.r');
 hold on
 lh2 = plot(TDJ,Z_dasfilt(T0J,'godin'),'-c', ...
     TDJ,Z_dasfilt(T1J,'godin'),'-g');
@@ -93,7 +94,8 @@ print('-djpeg100',[Tdir.moor_out,'Temperature_compare.jpg']);
 
 figure
 
-lh1 = plot(TD,Z_dasfilt(S0,'godin'),'-b',TD,Z_dasfilt(S1,'godin'),'-r');
+%lh1 = plot(TD,Z_dasfilt(S0,'godin'),'-b',TD,Z_dasfilt(S1,'godin'),'-r');
+lh1 = plot(TD,S0,'.b',TD,S1,'.r');
 hold on
 lh2 = plot(TDJ,Z_dasfilt(S0J,'godin'),'-c', ...
     TDJ,Z_dasfilt(S1J,'godin'),'-g');
